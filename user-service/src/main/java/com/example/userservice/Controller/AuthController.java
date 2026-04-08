@@ -1,7 +1,9 @@
 package com.example.userservice.Controller;
 
 import com.example.userservice.DTO.LoginRequest;
+import com.example.userservice.DTO.RegisterRequest;
 import com.example.userservice.DTO.ResponseToken;
+import com.example.userservice.Model.User;
 import com.example.userservice.Service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,10 +23,18 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseToken login(@Valid @RequestBody LoginRequest request) {
-        try{
+        try {
             return authService.login(request);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
-        catch (Exception ex){
+    }
+
+    @PostMapping("/register")
+    public User register(@Valid @RequestBody RegisterRequest request) {
+        try {
+            return authService.register(request);
+        } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
     }
