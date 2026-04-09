@@ -24,7 +24,7 @@ public class UserSeeder implements CommandLineRunner {
     }
 
     private void createIfAbsent(String name, String email, String role) {
-        if (userRepository.findByEmail(email).isPresent()) {
+        if (userRepository.existsByEmail(email)) {
             return;
         }
 
