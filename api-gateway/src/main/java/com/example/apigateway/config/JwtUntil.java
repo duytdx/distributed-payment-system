@@ -27,6 +27,10 @@ public class JwtUntil {
                 .getPayload();
     }
 
+    public String extractUserId(String token) {
+        return String.valueOf(extractAllClaims(token).get("id"));
+    }
+
     public String extractUsername(String token) {
         return extractAllClaims(token).getSubject();
     }
