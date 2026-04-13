@@ -8,8 +8,6 @@ import com.example.orderservice.Model.Order;
 
 @Service
 public class OrderEventProducer {
-    private static final String TOPIC = "order-events";
-
     private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
 
     public OrderEventProducer(KafkaTemplate<String, OrderEvent> kafkaTemplate) {
@@ -24,6 +22,6 @@ public class OrderEventProducer {
                 order.getStatus().name(),
                 order.getCreatedAt()
         );
-        kafkaTemplate.send(TOPIC, order.getId(), event);
+        kafkaTemplate.send("order.created", order.getId(), event);
     }
 }
