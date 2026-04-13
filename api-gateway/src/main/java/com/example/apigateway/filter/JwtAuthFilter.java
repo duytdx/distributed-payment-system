@@ -46,6 +46,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         MutableHttpServletRequest mutableRequest = new MutableHttpServletRequest(request);
+        mutableRequest.putHeader("X-User-Id", jwtUtil.extractUserId(token));
         mutableRequest.putHeader("X-Username", jwtUtil.extractUsername(token));
         mutableRequest.putHeader("X-Role", jwtUtil.extractRole(token));
 
