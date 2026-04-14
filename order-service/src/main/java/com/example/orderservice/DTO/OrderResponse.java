@@ -7,7 +7,7 @@ import java.util.List;
 import com.example.orderservice.Enums.OrderStatus;
 
 public record OrderResponse(
-        String id,
+        Long id,
         String userId,
         OrderStatus status,
         BigDecimal total,

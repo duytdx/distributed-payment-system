@@ -15,13 +15,14 @@ public class OrderEventProducer {
     }
 
     public void publishOrderEvent(Order order) {
+        String orderId = String.valueOf(order.getId());
         OrderEvent event = new OrderEvent(
-                order.getId(),
+                orderId,
                 order.getUserId(),
                 order.getTotal(),
                 order.getStatus().name(),
                 order.getCreatedAt()
         );
-        kafkaTemplate.send("order.created", order.getId(), event);
+        kafkaTemplate.send("order.created", orderId, event);
     }
 }

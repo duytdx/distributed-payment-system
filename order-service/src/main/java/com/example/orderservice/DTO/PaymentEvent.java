@@ -1,4 +1,4 @@
-package com.example.paymentservice.DTO;
+package com.example.orderservice.DTO;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -9,5 +9,4 @@ public record PaymentEvent(
         BigDecimal amount,
         String status,
         LocalDateTime timestamp) {
-
 }

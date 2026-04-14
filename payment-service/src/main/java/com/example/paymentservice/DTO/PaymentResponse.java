@@ -3,11 +3,14 @@ package com.example.paymentservice.DTO;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public record PaymentEvent(
+import com.example.paymentservice.Enums.PaymentStatus;
+
+public record PaymentResponse(
+        Long id,
         String orderId,
         String userId,
         BigDecimal amount,
-        String status,
-        LocalDateTime timestamp) {
+        PaymentStatus status,
+        LocalDateTime createdAt) {
 
 }
