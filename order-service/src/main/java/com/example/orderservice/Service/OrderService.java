@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.orderservice.DTO.CreateOrderRequest;
 import com.example.orderservice.DTO.OrderResponse;
+import jakarta.persistence.EntityNotFoundException;
 import com.example.orderservice.Enums.OrderStatus;
 import com.example.orderservice.Kafka.OrderEventProducer;
 import com.example.orderservice.Model.Order;
@@ -62,5 +63,13 @@ public class OrderService {
                                 item.getPrice()))
                         .toList(),
                 savedOrder.getCreatedAt());
+    }
+
+    @Transactional
+    public void updateOrderStatus(String orderId, String paymentStatus) {
+        Order order = orderRepository.findById(Long.parseLong(orderId))
+                .orElseThrow(() -> new EntityNotFoundException("Order not found: " + orderId));
+        OrderStatus newStatus = "SUCCESS".equals(paymentStatus) ? OrderStatus.COMPLETED : OrderStatus.FAILED;
+        order.setStatus(newStatus);
     }
 }

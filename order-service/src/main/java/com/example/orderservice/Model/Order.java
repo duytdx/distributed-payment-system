@@ -26,8 +26,8 @@ import jakarta.persistence.OneToMany;
 @Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false)
     private String userId;
     @Enumerated(EnumType.STRING)
@@ -41,8 +41,8 @@ public class Order {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
