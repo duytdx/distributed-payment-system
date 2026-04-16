@@ -1,14 +1,13 @@
-package com.example.paymentservice.DTO;
+package com.example.notificationservice.DTO;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public record PaymentEvent(
+public record NotificationEvent(
         String orderId,
         String userId,
         String userEmail,
         BigDecimal amount,
         String status,
         LocalDateTime timestamp) {
-
 }

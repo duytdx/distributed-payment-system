@@ -27,13 +27,14 @@ public class OrderService {
     }
 
     @Transactional
-    public OrderResponse createOrder(String userId, CreateOrderRequest request) {
+    public OrderResponse createOrder(String userId, String userEmail, CreateOrderRequest request) {
         BigDecimal total = request.items().stream()
                 .map(item -> item.price().multiply(BigDecimal.valueOf(item.quantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         Order order = new Order();
         order.setUserId(userId);
+        order.setUserEmail(userEmail);
         order.setStatus(OrderStatus.PENDING);
         order.setTotal(total);
         List<OrderItem> orderItems = request.items().stream()
