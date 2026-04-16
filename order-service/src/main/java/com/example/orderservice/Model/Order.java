@@ -30,6 +30,8 @@ public class Order {
     private Long id;
     @Column(nullable = false)
     private String userId;
+    @Column(nullable = false)
+    private String userEmail;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
     @Column(nullable = false)
@@ -46,6 +48,9 @@ public class Order {
 
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
+
+    public String getUserEmail() { return userEmail; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
     public OrderStatus getStatus() { return status; }
     public void setStatus(OrderStatus status) { this.status = status; }

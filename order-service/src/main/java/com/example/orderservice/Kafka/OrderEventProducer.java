@@ -19,6 +19,7 @@ public class OrderEventProducer {
         OrderEvent event = new OrderEvent(
                 orderId,
                 order.getUserId(),
+                order.getUserEmail(),
                 order.getTotal(),
                 order.getStatus().name(),
                 order.getCreatedAt()

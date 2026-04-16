@@ -55,6 +55,7 @@ public class PaymentService {
         paymentEventProducer.publishPaymentEvent(new PaymentEvent(
                 payment.getOrderId(),
                 payment.getUserId(),
+                orderEvent.userEmail(),
                 payment.getAmount(),
                 payment.getStatus().name(),
                 orderEvent.timestamp()));
